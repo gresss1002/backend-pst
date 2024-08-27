@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import cookieSession from 'cookie-session'; // jika Anda menggunakan ini, Anda bisa menghapusnya
 import session from 'express-session'; // tambahkan ini
 import passport from 'passport';
@@ -8,6 +9,12 @@ import { MONGODB_URI, SESSION_SECRET } from './config';
 import authRoutes from './routes/authRoutes';
 
 const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:5173', // Ganti dengan URL front-end Anda
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    // credentials: true
+  }));
 
 app.use(express.json());
 
