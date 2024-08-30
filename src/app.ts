@@ -9,6 +9,7 @@ import { MONGODB_URI, SESSION_SECRET } from './config';
 import authRoutes from './routes/authRoutes';
 import reservasiRoutes from './routes/reservasiRoutes';
 import ratingRoutes from './routes/ratingRoutes';
+import complaintRoutes from './routes/complaintRoutes';
 
 const app = express();
 
@@ -41,6 +42,8 @@ app.use(authRoutes);
 app.use('/reservasi', reservasiRoutes);
 
 app.use('/rating', ratingRoutes);
+
+app.use('/complaints', complaintRoutes);
 
 mongoose
   .connect(MONGODB_URI, {
