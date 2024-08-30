@@ -10,6 +10,6 @@ router.get('/auth/google/callback', passport.authenticate('google', { failureRed
   res.redirect('/');
 });
 
-router.patch('/users/:userId/role', changeUserRole);
+router.patch('/users/change-role', changeUserRole);
 
 export default router;

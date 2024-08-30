@@ -12,10 +12,14 @@ const app = express();
 
 app.use(cors({
     origin: 'http://localhost:5173', // Ganti dengan URL front-end Anda
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   }));
 
+// Middleware to parse JSON bodies
 app.use(express.json());
+
+// Middleware to parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true }));
 
 // Tambahkan middleware session
 app.use(

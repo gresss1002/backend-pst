@@ -6,13 +6,13 @@ interface IUser extends Document {
   name: string;
   role: "konsumen" | "admin" | "konsultan";
   createdAt: Date;
-  gender: "Perempuan" | "Laki-laki";
+  gender: string;
   birthDate: string;
   telepon: string;
   province: string;
   regency: string;
-  work: "PNS" | "Swasta" | "Lainnya";
-  education: "SLTA" | "D1/D2/D3" | "D4/S1" | "S2" | "S3";
+  work: string;
+  education: string;
   position: string;
   field: [string];
   available: [string];
@@ -24,13 +24,13 @@ const UserSchema: Schema = new Schema({
   name: { type: String, required: true },
   role: { type: String, enum: ['konsumen', 'admin', 'konsultan'], default: 'konsumen' },
   createdAt: { type: Date, default: Date.now },
-  gender: { type: String, enum: ['Perempuan', 'Laki-laki'] },
+  gender: { type: String, default: '' },
   birthDate: { type: String, default: '' },
   telepon: { type: String, default: '' },
   province: { type: String, default: '' },
   regency: { type: String, default: '' },
-  work: { type: String, enum: ['PNS', 'Swasta', 'Lainnya'] },
-  education: { type: String, enum: ['SLTA', 'D1/D2/D3', 'D4/S1', 'S2', 'S3'] },
+  work: { type: String, default: '' },
+  education: { type: String, default: '' },
   position: { type: String, default: '' },
   field: { type: [String], default: [] },
   available: { type: [String], default: [] },
