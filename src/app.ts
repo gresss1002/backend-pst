@@ -47,7 +47,7 @@ app.use('/complaint', complaintRoutes);
 
 mongoose
   .connect(MONGODB_URI, {
-    serverSelectionTimeoutMS: 60000, 
+    serverSelectionTimeoutMS: 70000, 
   })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Failed to connect to MongoDB', err));
