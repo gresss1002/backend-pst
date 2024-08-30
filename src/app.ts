@@ -44,7 +44,7 @@ app.use('/rating', ratingRoutes);
 
 mongoose
   .connect(MONGODB_URI, {
-    serverSelectionTimeoutMS: 30000, 
+    serverSelectionTimeoutMS: 60000, 
   })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Failed to connect to MongoDB', err));
