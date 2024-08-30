@@ -32,7 +32,7 @@ const UserSchema: Schema = new Schema({
   work: { type: String, enum: ['PNS', 'Swasta', 'Lainnya'] },
   education: { type: String, enum: ['SLTA', 'D1/D2/D3', 'D4/S1', 'S2', 'S3'] },
   position: { type: String, default: '' },
-  field: { type: [String], default: '' },
+  field: { type: [String], default: [] },
   available: { type: [String], default: [] },
 });
 
