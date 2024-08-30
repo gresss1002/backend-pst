@@ -8,8 +8,8 @@ router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 
 
 router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
   res.redirect('/');
-
-  router.patch('/users/:userId/role', changeUserRole);
 });
+
+router.patch('/users/:userId/role', changeUserRole);
 
 export default router;
