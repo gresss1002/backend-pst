@@ -43,7 +43,7 @@ app.use('/reservasi', reservasiRoutes);
 
 app.use('/rating', ratingRoutes);
 
-app.use('/complaints', complaintRoutes);
+app.use('/complaint', complaintRoutes);
 
 mongoose
   .connect(MONGODB_URI, {
