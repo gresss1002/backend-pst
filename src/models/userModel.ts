@@ -17,6 +17,7 @@ interface IUser extends Document {
   field: [string];
   available: [string];
   photoLink: string;
+  rating: number;
 }
 
 const UserSchema: Schema = new Schema({
@@ -36,6 +37,7 @@ const UserSchema: Schema = new Schema({
   field: { type: [String], default: [] },
   available: { type: [String], default: [] },
   photoLink: { type: String, default: '' },
+  rating: { type: Number, default: 0 },
 });
 
 export default mongoose.model<IUser>('User', UserSchema);
