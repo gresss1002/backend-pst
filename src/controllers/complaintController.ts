@@ -6,7 +6,7 @@ export const createComplaint = async (req: Request, res: Response) => {
         const complaint = await complaintService.createComplaint(req.body);
         res.status(201).json(complaint);
     } catch (error) {
-        res.status(500).json({ message: 'Error creating complaint', error: error.message });
+        res.status(500).json({ message: 'Error creating complaint', error: (error as Error).message });
     }
 };
 
@@ -18,7 +18,7 @@ export const getComplaintById = async (req: Request, res: Response) => {
         }
         res.json(complaint);
     } catch (error) {
-        res.status(500).json({ message: 'Error retrieving complaint', error: error.message });
+        res.status(500).json({ message: 'Error retrieving complaint', error: (error as Error).message });
     }
 };
 
@@ -27,7 +27,7 @@ export const getAllComplaints = async (req: Request, res: Response) => {
         const complaints = await complaintService.getAllComplaints();
         res.json(complaints);
     } catch (error) {
-        res.status(500).json({ message: 'Error retrieving complaints', error: error.message });
+        res.status(500).json({ message: 'Error retrieving complaints', error: (error as Error).message });
     }
 };
 
@@ -39,7 +39,7 @@ export const updateComplaint = async (req: Request, res: Response) => {
         }
         res.json(complaint);
     } catch (error) {
-        res.status(500).json({ message: 'Error updating complaint', error: error.message });
+        res.status(500).json({ message: 'Error updating complaint', error: (error as Error).message });
     }
 };
 
@@ -51,6 +51,6 @@ export const deleteComplaint = async (req: Request, res: Response) => {
         }
         res.json({ message: 'Complaint deleted' });
     } catch (error) {
-        res.status(500).json({ message: 'Error deleting complaint', error: error.message });
+        res.status(500).json({ message: 'Error deleting complaint', error: (error as Error).message });
     }
 };

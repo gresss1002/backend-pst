@@ -1,5 +1,5 @@
 import Complaint, { IComplaint } from '../models/complaintModels';
-import User, { IUser } from '../models/userModels'; // Import the User model
+import User, { IUser } from '../models/userModel'; // Import the User model
 
 export const createComplaint = async (data: Partial<IComplaint>): Promise<IComplaint> => {
     // Fetch user details based on idKonsumen
