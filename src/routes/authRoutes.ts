@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import passport from 'passport';
-import { changeUserRole } from '../controllers/authController';
+import { changeUserRole, editUser } from '../controllers/authController';
 
 const router = Router();
 
@@ -11,5 +11,7 @@ router.get('/auth/google/callback', passport.authenticate('google', { failureRed
 });
 
 router.patch('/users/change-role', changeUserRole);
+
+router.patch('/users/:userId', editUser);
 
 export default router;

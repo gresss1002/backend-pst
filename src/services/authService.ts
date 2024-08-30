@@ -17,3 +17,13 @@ export const updateUserRole = async (userId: string, newRole: "konsumen" | "admi
     throw new Error(`Error updating user role: ${(error as Error).message}`);
   }
 };
+
+
+export const updateUserDetails = async (userId: string, updateData: Partial<typeof User>) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(userId, updateData, { new: true });
+    return updatedUser;
+  } catch (error) {
+    throw new Error(`Error updating user details: ${(error as Error).message}`);
+  }
+};
