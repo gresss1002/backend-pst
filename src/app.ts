@@ -7,6 +7,7 @@ import passport from 'passport';
 import './services/passport'; // pastikan ini diimport setelah express-session
 import { MONGODB_URI, SESSION_SECRET } from './config';
 import authRoutes from './routes/authRoutes';
+import reservasiRoutes from './routes/reservasiRoutes';
 
 const app = express();
 
@@ -35,6 +36,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(authRoutes);
+
+app.use('/reservasi', reservasiRoutes);
 
 mongoose
   .connect(MONGODB_URI)
