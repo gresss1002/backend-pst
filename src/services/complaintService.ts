@@ -17,8 +17,8 @@ export const createComplaint = async (data: Partial<IComplaint>): Promise<ICompl
         name: user.name,
         telephone: user.telephone,
         gender: user.gender,
-        province: user.province,
-        regency: user.regency,
+        district: user.district,
+        subsdistrict: user.subsdistrict,
     });
 
     return await complaintData.save();

@@ -9,8 +9,8 @@ export interface IUser extends Document {
   gender: string;
   birthDate: string;
   telephone: string;
-  province: string;
-  regency: string;
+  district: string;
+  subsdistrict: string;
   work: string;
   education: string;
   position: string;
@@ -29,8 +29,8 @@ const UserSchema: Schema = new Schema({
   gender: { type: String, default: '' },
   birthDate: { type: String, default: '' },
   telephone: { type: String, default: '' },
-  province: { type: String, default: '' },
-  regency: { type: String, default: '' },
+  district: { type: String, default: '' },
+  subsdistrict: { type: String, default: '' },
   work: { type: String, default: '' },
   education: { type: String, default: '' },
   position: { type: String, default: '' },
