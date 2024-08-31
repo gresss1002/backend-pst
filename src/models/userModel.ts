@@ -8,7 +8,7 @@ interface IUser extends Document {
   createdAt: Date;
   gender: string;
   birthDate: string;
-  telepon: string;
+  telephone: string;
   province: string;
   regency: string;
   work: string;
@@ -28,7 +28,7 @@ const UserSchema: Schema = new Schema({
   createdAt: { type: Date, default: Date.now },
   gender: { type: String, default: '' },
   birthDate: { type: String, default: '' },
-  telepon: { type: String, default: '' },
+  telephone: { type: String, default: '' },
   province: { type: String, default: '' },
   regency: { type: String, default: '' },
   work: { type: String, default: '' },
