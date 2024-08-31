@@ -4,7 +4,7 @@ export interface IUser extends Document {
   googleId: string;
   email: string;
   name: string;
-  role: "konsumen" | "admin" | "konsultan";
+  role: "Konsumen" | "Admin" | "Konsultan";
   createdAt: Date;
   gender: string;
   birthDate: string;
@@ -24,7 +24,7 @@ const UserSchema: Schema = new Schema({
   googleId: { type: String, required: true },
   email: { type: String, required: true },
   name: { type: String, required: true },
-  role: { type: String, enum: ['konsumen', 'admin', 'konsultan'], default: 'konsumen' },
+  role: { type: String, enum: ['Konsumen', 'Admin', 'Konsultan'], default: 'Konsumen' },
   createdAt: { type: Date, default: Date.now },
   gender: { type: String, default: '' },
   birthDate: { type: String, default: '' },

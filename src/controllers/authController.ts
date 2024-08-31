@@ -13,7 +13,7 @@ export const changeUserRole = async (req: Request, res: Response) => {
     return res.status(400).json({ message: "User ID and role are required" });
   }
 
-  if (!["konsumen", "admin", "konsultan"].includes(role)) {
+  if (!["Konsumen", "Admin", "Konsultan"].includes(role)) {
     return res.status(400).json({ message: "Invalid role specified" });
   }
 

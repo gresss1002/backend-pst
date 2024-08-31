@@ -9,7 +9,7 @@ export const findOrCreateUser = async (googleId: string, email: string, name: st
   return user;
 };
 
-export const updateUserRole = async (userId: string, newRole: "konsumen" | "admin" | "konsultan") => {
+export const updateUserRole = async (userId: string, newRole: "Konsumen" | "Admin" | "Konsultan") => {
   try {
     const user = await User.findByIdAndUpdate(userId, { role: newRole }, { new: true });
     return user;
