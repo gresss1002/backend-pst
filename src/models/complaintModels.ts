@@ -5,7 +5,7 @@ export interface IComplaint extends Document {
     suggestion: string;
     idKonsumen: string;
     name: string;
-    telepon: string;
+    telephone: string;
     gender: string;
     province: string;
     regency: string;
@@ -16,7 +16,7 @@ const ComplaintSchema = new Schema<IComplaint>({
     suggestion: { type: String, required: true },
     idKonsumen: { type: String, required: true },
     name: { type: String, required: true },
-    telepon: { type: String, required: true },
+    telephone: { type: String, required: true },
     gender: { type: String, required: true },
     province: { type: String, required: true },
     regency: { type: String, required: true },

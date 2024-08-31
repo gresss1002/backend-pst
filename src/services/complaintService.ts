@@ -15,7 +15,7 @@ export const createComplaint = async (data: Partial<IComplaint>): Promise<ICompl
         suggestion: data.suggestion,
         idKonsumen: user._id,
         name: user.name,
-        telepon: user.telepon,
+        telephone: user.telephone,
         gender: user.gender,
         province: user.province,
         regency: user.regency,
