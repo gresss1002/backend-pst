@@ -7,7 +7,7 @@ const router = Router();
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-  res.redirect('/');
+  res.redirect('http://localhost:5173/auth/google/callback');
 });
 
 router.patch('/users/change-role', changeUserRole);
