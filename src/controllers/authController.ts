@@ -1,5 +1,23 @@
 import { Request, Response } from 'express';
-import { findOrCreateUser, updateUserDetails, updateUserRole } from '../services/authService';
+import { findOrCreateUser, findUserByGoogleId, updateUserDetails, updateUserRole } from '../services/authService';
+
+export const getUserByGoogleId = async (req: Request, res: Response) => {
+  const { googleId } = req.params;
+
+  if (!googleId) {
+    return res.status(400).json({ message: "Google ID is required" });
+  }
+
+  try {
+    const user = await findUserByGoogleId(googleId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ message: (error as Error).message });
+  }
+};
 
 export const googleAuthCallback = async (req: Request, res: Response) => {
   // Implementasi callback untuk Google Auth

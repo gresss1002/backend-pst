@@ -1,5 +1,14 @@
 import User from '../models/userModel';
 
+export const findUserByGoogleId = async (googleId: string) => {
+  try {
+    const user = await User.findOne({ googleId });
+    return user;
+  } catch (error) {
+    throw new Error(`Error finding user by Google ID: ${(error as Error).message}`);
+  }
+};
+
 export const findOrCreateUser = async (googleId: string, email: string, name: string) => {
   let user = await User.findOne({ googleId });
   if (!user) {

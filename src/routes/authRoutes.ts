@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import passport from 'passport';
-import { changeUserRole, editUser } from '../controllers/authController';
+import { changeUserRole, editUser, getUserByGoogleId } from '../controllers/authController';
 
 const router = Router();
 
@@ -22,5 +22,7 @@ router.patch('/users/change-role', changeUserRole);
 
 // Route untuk mengedit user
 router.patch('/users/:userId', editUser);
+
+router.get('/users/google/:googleId', getUserByGoogleId);
 
 export default router;
