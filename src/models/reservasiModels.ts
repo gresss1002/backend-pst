@@ -3,7 +3,7 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface IReservasi extends Document {
-    date: Date;
+    reservasiDate: Date;
     time: string;
     idKonsultan: string;
     idKonsumen: string;
@@ -16,7 +16,7 @@ export interface IReservasi extends Document {
 }
 
 const ReservasiSchema = new Schema<IReservasi>({
-    date: { type: Date, required: true },
+    reservasiDate: { type: Date, required: true },
     time: { type: String, required: true },
     idKonsultan: { type: String, required: true },
     idKonsumen: { type: String, required: true },
