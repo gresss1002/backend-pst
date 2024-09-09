@@ -25,7 +25,7 @@ const ReservasiSchema = new Schema<IReservasi>({
     queue: { type: Number, required: true },
     status: { type: String, required: true },
     link: { type: String, required: true },
-    descriptionReservasi: { type: String, required: true },
+    descriptionReservasi: { type: String },
 });
 
 const Reservasi = model<IReservasi>('Reservasi', ReservasiSchema);
