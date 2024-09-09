@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { findOrCreateUser, findUserByGoogleId, updateUserDetails, updateUserRole } from '../services/authService';
+import { findOrCreateUser, findUserByGoogleId, getAllKonsultanUsers, updateUserDetails, updateUserRole } from '../services/authService';
 
 export const getUserByGoogleId = async (req: Request, res: Response) => {
   const { googleId } = req.params;
@@ -62,5 +62,14 @@ export const editUser = async (req: Request, res: Response) => {
     res.status(200).json({ message: "User updated successfully", user: updatedUser });
   } catch (error) {
     res.status(500).json({ message: (error as Error).message });
+  }
+};
+
+export const getAllsKonsultanUsers = async (req: Request, res: Response) => {
+  try {
+      const konsultanUsers = await getAllKonsultanUsers();
+      res.status(200).json(konsultanUsers);
+  } catch (error) {
+      res.status(400).json({ error: (error as Error).message });
   }
 };

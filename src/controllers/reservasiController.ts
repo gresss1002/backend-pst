@@ -50,3 +50,21 @@ export const deleteReservasi = async (req: Request, res: Response) => {
         res.status(400).json({ error: (error as Error).message });
     }
 };
+
+export const getAllReservasiByKonsumenId = async (req: Request, res: Response) => {
+    try {
+        const reservasiList = await reservasiService.getAllReservasiByKonsumenId(req.params.userId);
+        res.status(200).json(reservasiList);
+    } catch (error) {
+        res.status(400).json({ error: (error as Error).message });
+    }
+};
+
+export const getAllReservasiByKonsultanId = async (req: Request, res: Response) => {
+    try {
+        const reservasiList = await reservasiService.getAllReservasiByKonsultanId(req.params.userId);
+        res.status(200).json(reservasiList);
+    } catch (error) {
+        res.status(400).json({ error: (error as Error).message });
+    }
+};

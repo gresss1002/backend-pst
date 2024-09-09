@@ -22,3 +22,12 @@ export const updateReservasi = async (id: string, data: Partial<IReservasi>): Pr
 export const deleteReservasi = async (id: string): Promise<IReservasi | null> => {
     return await Reservasi.findByIdAndDelete(id).exec();
 };
+
+// New service methods
+export const getAllReservasiByKonsumenId = async (userId: string): Promise<IReservasi[]> => {
+    return await Reservasi.find({ idKonsumen: userId }).exec();
+};
+
+export const getAllReservasiByKonsultanId = async (userId: string): Promise<IReservasi[]> => {
+    return await Reservasi.find({ idKonsultan: userId }).exec();
+};

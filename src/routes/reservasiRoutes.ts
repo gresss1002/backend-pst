@@ -11,4 +11,8 @@ router.get('/:id', reservasiController.getReservasiById);
 router.put('/:id', reservasiController.updateReservasi);
 router.delete('/:id', reservasiController.deleteReservasi);
 
+// New routes for getting reservations by user ID
+router.get('/konsumen/:userId', reservasiController.getAllReservasiByKonsumenId);
+router.get('/konsultan/:userId', reservasiController.getAllReservasiByKonsultanId);
+
 export default router;

@@ -1,4 +1,4 @@
-import User from '../models/userModel';
+import User, { IUser } from '../models/userModel';
 
 export const findUserByGoogleId = async (googleId: string) => {
   try {
@@ -34,5 +34,13 @@ export const updateUserDetails = async (userId: string, updateData: Partial<type
     return updatedUser;
   } catch (error) {
     throw new Error(`Error updating user details: ${(error as Error).message}`);
+  }
+};
+
+export const getAllKonsultanUsers = async (): Promise<IUser[]> => {
+  try {
+      return await User.find({ role: 'Konsultan' }).exec();
+  } catch (error) {
+      throw new Error(`Error fetching all Konsultan users: ${(error as Error).message}`);
   }
 };
