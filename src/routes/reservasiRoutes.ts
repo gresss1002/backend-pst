@@ -15,4 +15,6 @@ router.delete('/:id', reservasiController.deleteReservasi);
 router.get('/konsumen/:userId', reservasiController.getAllReservasiByKonsumenId);
 router.get('/konsultan/:userId', reservasiController.getAllReservasiByKonsultanId);
 
+router.get('/status/:status', reservasiController.getAllReservasiByStatus);
+
 export default router;

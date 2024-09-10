@@ -68,3 +68,13 @@ export const getAllReservasiByKonsultanId = async (req: Request, res: Response) 
         res.status(400).json({ error: (error as Error).message });
     }
 };
+
+export const getAllReservasiByStatus = async (req: Request, res: Response) => {
+    try {
+        const status = req.params.status;
+        const reservasiList = await reservasiService.getAllReservasiByStatus(status);
+        res.status(200).json(reservasiList);
+    } catch (error) {
+        res.status(400).json({ error: (error as Error).message });
+    }
+};

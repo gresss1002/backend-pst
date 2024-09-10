@@ -31,3 +31,7 @@ export const getAllReservasiByKonsumenId = async (userId: string): Promise<IRese
 export const getAllReservasiByKonsultanId = async (userId: string): Promise<IReservasi[]> => {
     return await Reservasi.find({ idKonsultan: userId }).exec();
 };
+
+export const getAllReservasiByStatus = async (status: string): Promise<IReservasi[]> => {
+    return await Reservasi.find({ status }).exec();
+};
