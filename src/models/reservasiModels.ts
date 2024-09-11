@@ -10,7 +10,7 @@ export interface IReservasi extends Document {
     topic: string[];
     method: string;
     queue: number;
-    status: string;
+    status: "Disetujui" | "Diubah Admin" | "Diubah Konsultan" | "Menunggu Konfirmasi";
     link: string;
     descriptionReservasi: string;
 }
@@ -23,7 +23,7 @@ const ReservasiSchema = new Schema<IReservasi>({
     topic: { type: [String], required: true },
     method: { type: String, required: true },
     queue: { type: Number},
-    status: { type: String},
+    status: { type: String, enum: ["Disetujui", "Diubah Admin", "Diubah Konsultan", "Menunggu Konfirmasi"], default: 'Menunggu Konfirmasi' },
     link: { type: String },
     descriptionReservasi: { type: String },
 });
