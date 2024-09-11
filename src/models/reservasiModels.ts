@@ -19,7 +19,7 @@ const ReservasiSchema = new Schema<IReservasi>({
     reservasiDate: { type: Date, required: true },
     time: { type: String, required: true },
     idKonsultan: { type: String, required: true },
-    idKonsumen: { type: String},
+    idKonsumen: { type: String, required: true},
     topic: { type: [String], required: true },
     method: { type: String, required: true },
     queue: { type: Number},
