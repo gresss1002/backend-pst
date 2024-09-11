@@ -12,6 +12,8 @@ import ratingRoutes from './routes/ratingRoutes';
 import complaintRoutes from './routes/complaintRoutes';
 
 const app = express();
+const express = require('express');
+const cors = require('cors');
 
 app.use(cors({
     origin: ['http://localhost:5173'], // Ganti dengan URL front-end Anda
