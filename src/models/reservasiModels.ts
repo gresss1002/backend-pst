@@ -18,7 +18,7 @@ export interface IReservasi extends Document {
 const ReservasiSchema = new Schema<IReservasi>({
     reservasiDate: { type: Date, required: true },
     time: { type: String, required: true },
-    idKonsultan: { type: String},
+    idKonsultan: { type: String, required: true },
     idKonsumen: { type: String},
     topic: { type: [String], required: true },
     method: { type: String, required: true },
