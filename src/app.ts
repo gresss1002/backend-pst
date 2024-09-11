@@ -16,6 +16,7 @@ const app = express();
 app.use(cors({
     origin: ['http://localhost:5173'], // Ganti dengan URL front-end Anda
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    credentials: true
   }));
 
 // Middleware to parse JSON bodies
