@@ -10,9 +10,10 @@ export const createReservasi = async (data: IReservasi): Promise<IReservasi> => 
         return await reservasi.save();
     } catch (error) {
         console.error('Error creating reservation:', error);
-        throw error;
+        throw new Error('Failed to create reservation');
     }
 };
+
 
 
 export const getReservasiById = async (req: Request, res: Response) => {
