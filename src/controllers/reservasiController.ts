@@ -2,19 +2,15 @@
 
 import { Request, Response } from 'express';
 import * as reservasiService from '../services/reservasiService';
-import Reservasi, { IReservasi } from '../models/reservasiModels';
 
-export const createReservasi = async (data: IReservasi): Promise<IReservasi> => {
+export const createReservasi = async (req: Request, res: Response) => {
     try {
-        const reservasi = new Reservasi(data);
-        return await reservasi.save();
+        const reservasi = await reservasiService.createReservasi(req.body);
+        res.status(201).json(reservasi);
     } catch (error) {
-        console.error('Error creating reservation:', error);
-        throw new Error('Failed to create reservation');
+        res.status(400).json({ error: (error as Error).message });
     }
 };
-
-
 
 export const getReservasiById = async (req: Request, res: Response) => {
     try {
