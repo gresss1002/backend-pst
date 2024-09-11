@@ -11,15 +11,11 @@ import reservasiRoutes from './routes/reservasiRoutes';
 import ratingRoutes from './routes/ratingRoutes';
 import complaintRoutes from './routes/complaintRoutes';
 
-// const express = require('express');
-// const cors = require('cors');
 const app = express();
-
 
 app.use(cors({
     origin: ['http://localhost:5173'], // Ganti dengan URL front-end Anda
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    credentials: true
   }));
 
 // Middleware to parse JSON bodies
@@ -53,7 +49,7 @@ app.use('/complaint', complaintRoutes);
 
 mongoose
   .connect(MONGODB_URI, {
-    serverSelectionTimeoutMS: 1000000, 
+    serverSelectionTimeoutMS: 500000, 
   })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Failed to connect to MongoDB', err));
