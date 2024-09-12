@@ -6,7 +6,7 @@ import * as ratingService from '../services/ratingService';
 export const createRating = async (req: Request, res: Response) => {
     try {
         const rating = await ratingService.createRating(req.body);
-        res.status(200).json(rating);
+        res.status(201).json(rating);
     } catch (error) {
         res.status(400).json({ error: (error as Error).message });
     }

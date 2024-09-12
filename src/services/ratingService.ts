@@ -32,13 +32,7 @@ const recalculateConsultantRating = async (idKonsultan: string) => {
     }
 };
 
-export const createRating = async (data: IRating): Promise<IRating | null> => {
-    // Check if a rating already exists for the given reservasi ID
-    const existingRating = await Rating.findOne({ idReservasi: data.idReservasi }).exec();
-    if (existingRating) {
-        throw new Error('Rating for this reservation already exists.');
-    }
-
+export const createRating = async (data: IRating): Promise<IRating> => {
     const rating = new Rating(data);
     const savedRating = await rating.save();
 
