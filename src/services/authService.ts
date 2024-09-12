@@ -44,3 +44,11 @@ export const getAllKonsultanUsers = async (): Promise<IUser[]> => {
       throw new Error(`Error fetching all Konsultan users: ${(error as Error).message}`);
   }
 };
+
+export const getAllConsumerUsers = async (): Promise<IUser[]> => {
+  try {
+    return await User.find({ role: 'Konsumen' }).exec();
+  } catch (error) {
+    throw new Error(`Error fetching all consumer users: ${(error as Error).message}`);
+  }
+};
