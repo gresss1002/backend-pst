@@ -2,13 +2,25 @@
 
 import { Request, Response } from 'express';
 import * as ratingService from '../services/ratingService';
+import Rating from '../models/ratingModels';
 
 export const createRating = async (req: Request, res: Response) => {
     try {
-        const rating = await ratingService.createRating(req.body);
-        res.status(201).json(rating);
+        const { idReservasi, score } = req.body;
+
+        // Check if a rating already exists for this idReservasi
+        const existingRating = await Rating.findOne({ idReservasi });
+        if (existingRating) {
+            return res.status(400).json({ message: 'Rating already exists for this reservation' });
+        }
+
+        // Create new rating if it doesn't exist
+        const newRating = new Rating({ idReservasi, score });
+        await newRating.save();
+        res.status(201).json(newRating);
     } catch (error) {
-        res.status(400).json({ error: (error as Error).message });
+        console.error('Error creating rating:', error);
+        res.status(400).json({ message: 'Error creating rating' });
     }
 };
 
