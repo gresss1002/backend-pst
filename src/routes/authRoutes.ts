@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import passport from 'passport';
-import { changeUserRole, editUser, getAllsKonsultanUsers, getUserByGoogleId } from '../controllers/authController';
+import { changeUserRole, editUser, getAllsKonsultanUsers, getAllsKonsumenUsers, getUserByGoogleId } from '../controllers/authController';
 import { getAllKonsultanUsers } from '../services/authService';
 
 const router = Router();
@@ -27,5 +27,7 @@ router.patch('/users/:userId', editUser);
 router.get('/users/google/:googleId', getUserByGoogleId);
 
 router.get('/users/konsultan', getAllsKonsultanUsers);
+
+router.get('/users/konsumen', getAllsKonsumenUsers);
 
 export default router;

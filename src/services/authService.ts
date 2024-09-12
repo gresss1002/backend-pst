@@ -45,7 +45,7 @@ export const getAllKonsultanUsers = async (): Promise<IUser[]> => {
   }
 };
 
-export const getAllConsumerUsers = async (): Promise<IUser[]> => {
+export const getAllKonsumenUsers = async (): Promise<IUser[]> => {
   try {
     return await User.find({ role: 'Konsumen' }).exec();
   } catch (error) {
