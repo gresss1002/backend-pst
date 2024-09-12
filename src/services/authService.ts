@@ -1,4 +1,5 @@
 import User, { IUser } from '../models/userModel';
+import jwt from 'jsonwebtoken';
 
 export const findUserByGoogleId = async (googleId: string) => {
   try {
@@ -51,4 +52,21 @@ export const getAllKonsumenUsers = async (): Promise<IUser[]> => {
   } catch (error) {
     throw new Error(`Error fetching all consumer users: ${(error as Error).message}`);
   }
+};
+
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';  // simpan secret key di variabel lingkungan
+
+// Fungsi untuk membuat token JWT
+export const generateToken = (user: any) => {
+  return jwt.sign(
+    {
+      googleId: user.googleId,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+    },
+    JWT_SECRET,
+    { expiresIn: '1h' }  // Token berlaku selama 1 jam
+  );
 };

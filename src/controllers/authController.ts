@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { findOrCreateUser, findUserByGoogleId, getAllKonsultanUsers, getAllKonsumenUsers, updateUserDetails, updateUserRole } from '../services/authService';
+import { findOrCreateUser, findUserByGoogleId, generateToken, getAllKonsultanUsers, getAllKonsumenUsers, updateUserDetails, updateUserRole } from '../services/authService';
 
 export const getUserByGoogleId = async (req: Request, res: Response) => {
   const { googleId } = req.params;
@@ -20,8 +20,17 @@ export const getUserByGoogleId = async (req: Request, res: Response) => {
 };
 
 export const googleAuthCallback = async (req: Request, res: Response) => {
-  // Implementasi callback untuk Google Auth
-  res.redirect('/');
+  const user = req.user as any;
+
+  if (user) {
+    // Generate JWT token
+    const token = generateToken(user);
+
+    // Redirect to frontend with token and user info
+    res.redirect(`http://localhost:5173/welcome?googleId=${user.googleId}&email=${user.email}&name=${user.name}&token=${token}`);
+  } else {
+    res.redirect('/');
+  }
 };
 
 export const changeUserRole = async (req: Request, res: Response) => {
