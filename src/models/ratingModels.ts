@@ -1,17 +1,16 @@
 // src/models/ratingModels.ts
-
-import { Schema, model, Document } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IRating extends Document {
     idReservasi: string;
     score: number;
 }
 
-const RatingSchema = new Schema<IRating>({
-    idReservasi: { type: String, required: true },
-    score: { type: Number, required: true, min: 1, max: 5 }, // Assuming score is between 1 and 5
+const ratingSchema = new Schema<IRating>({
+    idReservasi: { type: String, required: true, unique: true },
+    score: { type: Number, required: true },
 });
 
-const Rating = model<IRating>('Rating', RatingSchema);
+const Rating = mongoose.model<IRating>('Rating', ratingSchema);
 
 export default Rating;
