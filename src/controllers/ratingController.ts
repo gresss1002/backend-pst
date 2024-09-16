@@ -3,6 +3,7 @@
 import { Request, Response } from 'express';
 import * as ratingService from '../services/ratingService';
 import Rating from '../models/ratingModels';
+import Reservasi from '../models/reservasiModels';
 
 // export const createRating = async (req: Request, res: Response) => {
 //     try {
@@ -90,3 +91,7 @@ export const deleteRating = async (req: Request, res: Response) => {
         res.status(400).json({ error:  (error as Error).message });
     }
 };
+function recalculateConsultantRating(idKonsultan: string) {
+    throw new Error('Function not implemented.');
+}
+
