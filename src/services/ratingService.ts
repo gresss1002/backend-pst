@@ -32,7 +32,7 @@ import User from '../models/userModel';
 //     }
 // };
 
-const recalculateConsultantRating = async (idKonsultan: string) => {
+export const recalculateConsultantRating = async (idKonsultan: string) => {
     // Find all reservations for this consultant
     const reservasiList = await Reservasi.find({ idKonsultan }).exec();
     
@@ -54,6 +54,7 @@ const recalculateConsultantRating = async (idKonsultan: string) => {
         await User.findByIdAndUpdate(idKonsultan, { rating: 0 }).exec();
     }
 };
+
 
 
 export const createRating = async (data: IRating): Promise<IRating> => {

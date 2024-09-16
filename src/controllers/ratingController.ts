@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 import * as ratingService from '../services/ratingService';
 import Rating from '../models/ratingModels';
 import Reservasi from '../models/reservasiModels';
+import { recalculateConsultantRating } from '../services/ratingService';
 
 // export const createRating = async (req: Request, res: Response) => {
 //     try {
@@ -42,7 +43,7 @@ export const createRating = async (req: Request, res: Response) => {
         // Find the reservation to get the consultant ID
         const reservasi = await Reservasi.findById(idReservasi).exec();
         if (reservasi) {
-            await recalculateConsultantRating(reservasi.idKonsultan);
+            await recalculateConsultantRating(reservasi.idKonsultan); // Ensure this function is implemented
         }
 
         // Respond with a success message and the created rating
@@ -56,8 +57,6 @@ export const createRating = async (req: Request, res: Response) => {
         res.status(500).json({ message: 'Error creating rating', error: (error as Error).message });
     }
 };
-
-
 export const getRatingById = async (req: Request, res: Response) => {
     try {
         const rating = await ratingService.getRatingById(req.params.id);
@@ -96,7 +95,3 @@ export const deleteRating = async (req: Request, res: Response) => {
         res.status(400).json({ error:  (error as Error).message });
     }
 };
-function recalculateConsultantRating(idKonsultan: string) {
-    throw new Error('Function not implemented.');
-}
-
