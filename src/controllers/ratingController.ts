@@ -4,6 +4,26 @@ import { Request, Response } from 'express';
 import * as ratingService from '../services/ratingService';
 import Rating from '../models/ratingModels';
 
+// export const createRating = async (req: Request, res: Response) => {
+//     try {
+//         const { idReservasi, score } = req.body;
+
+//         // Check if a rating already exists for this idReservasi
+//         const existingRating = await Rating.findOne({ idReservasi });
+//         if (existingRating) {
+//             return res.status(400).json({ message: 'Rating already exists for this reservation' });
+//         }
+
+//         // Create new rating if it doesn't exist
+//         const newRating = new Rating({ idReservasi, score });
+//         await newRating.save();
+//         res.status(201).json(newRating);
+//     } catch (error) {
+//         console.error('Error creating rating:', error);
+//         res.status(400).json({ message: 'Error creating rating' });
+//     }
+// };
+
 export const createRating = async (req: Request, res: Response) => {
     try {
         const { idReservasi, score } = req.body;
@@ -17,12 +37,20 @@ export const createRating = async (req: Request, res: Response) => {
         // Create new rating if it doesn't exist
         const newRating = new Rating({ idReservasi, score });
         await newRating.save();
+
+        // Find the reservation to get the consultant ID
+        const reservasi = await Reservasi.findById(idReservasi).exec();
+        if (reservasi) {
+            await recalculateConsultantRating(reservasi.idKonsultan);
+        }
+
         res.status(201).json(newRating);
     } catch (error) {
         console.error('Error creating rating:', error);
         res.status(400).json({ message: 'Error creating rating' });
     }
 };
+
 
 export const getRatingById = async (req: Request, res: Response) => {
     try {
