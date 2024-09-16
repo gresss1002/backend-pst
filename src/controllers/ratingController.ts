@@ -37,7 +37,7 @@ export const createRating = async (req: Request, res: Response) => {
 
         // Create new rating if it doesn't exist
         const newRating = new Rating({ idReservasi, score });
-        await newRating.save();
+        const savedRating = await newRating.save();
 
         // Find the reservation to get the consultant ID
         const reservasi = await Reservasi.findById(idReservasi).exec();
@@ -45,10 +45,15 @@ export const createRating = async (req: Request, res: Response) => {
             await recalculateConsultantRating(reservasi.idKonsultan);
         }
 
-        res.status(201).json(newRating);
+        // Respond with a success message and the created rating
+        res.status(201).json({
+            message: 'Rating successfully created',
+            rating: savedRating
+        });
     } catch (error) {
         console.error('Error creating rating:', error);
-        res.status(400).json({ message: 'Error creating rating' });
+        // Include more details about the error in the response
+        res.status(500).json({ message: 'Error creating rating', error: (error as Error).message });
     }
 };
 
