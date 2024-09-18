@@ -12,7 +12,7 @@ router.get('/auth/google/callback', passport.authenticate('google', { failureRed
   const user = req.user as any;
   if (user) {
     // Redirect to the frontend with the user info
-    res.redirect(`http://localhost:5173/welcome?googleId=${user.googleId}&email=${user.email}&name=${user.name}`);
+    res.redirect(`https://pst-bps-kabupaten-banyuwangi.vercel.app/welcome?googleId=${user.googleId}&email=${user.email}&name=${user.name}`);
   } else {
     res.redirect('/');
   }

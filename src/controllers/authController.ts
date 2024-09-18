@@ -27,7 +27,7 @@ export const googleAuthCallback = async (req: Request, res: Response) => {
     const token = generateToken(user);
 
     // Redirect to frontend with token and user info
-    res.redirect(`http://localhost:5173/welcome?googleId=${user.googleId}&email=${user.email}&name=${user.name}&token=${token}`);
+    res.redirect(`https://pst-bps-kabupaten-banyuwangi.vercel.app/welcome?googleId=${user.googleId}&email=${user.email}&name=${user.name}&token=${token}`);
   } else {
     res.redirect('/');
   }
