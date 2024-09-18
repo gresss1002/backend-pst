@@ -15,7 +15,7 @@ import swiperRoutes from './routes/swiperRoutes';
 const app = express();
 
 app.use(cors({
-    origin: ['http://localhost:5173'], // Ganti dengan URL front-end Anda
+    origin: ['http://localhost:5173', 'https://pst-bps-kabupaten-banyuwangi.vercel.app'], // Ganti dengan URL front-end Anda
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   }));
 
