@@ -50,7 +50,7 @@ app.use('/swiper', swiperRoutes);
 
 mongoose
   .connect(MONGODB_URI, {
-    serverSelectionTimeoutMS: 1000000, 
+    serverSelectionTimeoutMS: 500000, 
   })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Failed to connect to MongoDB', err));
