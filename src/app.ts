@@ -32,7 +32,7 @@ app.use(
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true } // set secure: true untuk production
+    cookie: { secure: true } 
   })
 );
 
