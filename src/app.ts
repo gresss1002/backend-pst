@@ -11,6 +11,7 @@ import reservasiRoutes from './routes/reservasiRoutes';
 import ratingRoutes from './routes/ratingRoutes';
 import complaintRoutes from './routes/complaintRoutes';
 import swiperRoutes from './routes/swiperRoutes';
+import uploadRoutes from './routes/uploadRoutes';
 
 const app = express();
 
@@ -47,6 +48,8 @@ app.use('/rating', ratingRoutes);
 app.use('/complaint', complaintRoutes);
 
 app.use('/swiper', swiperRoutes);
+
+app.use('/upload', uploadRoutes);
 
 mongoose
   .connect(MONGODB_URI, {

@@ -14,11 +14,14 @@ export const uploadFile = async (req: Request, res: Response) => {
 
     if (file.mimetype.startsWith('image/')) {
       result = await uploadImage(file);
+
       res.status(200).json({ message: 'File uploaded successfully', url: result.secure_url });
     } else {
       return res.status(400).json({ message: 'Invalid file type' });
     }
+   
   } catch (error: any) {
+    console.log(error);
     res.status(500).json({ message: 'File upload failed', error });
   }
 };
