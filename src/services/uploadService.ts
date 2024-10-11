@@ -11,7 +11,7 @@ export const uploadImage = async (file: Express.Multer.File): Promise<UploadApiR
         return reject(error);
       }
       resolve(result as UploadApiResponse);
-    }).end(file.buffer);  // Gunakan file.buffer untuk mengunggah dari memori
+    }).end(file.buffer);  
   });
 };
 
