@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { findOrCreateUser, findUserByGoogleId, generateToken, getAllKonsultanUsers, getAllKonsumenUsers, updateUserDetails, updateUserRole } from '../services/authService';
+import { findOrCreateUser, findUserByGoogleId, generateToken, getAllAdminUsers, getAllKonsultanUsers, getAllKonsumenUsers, updateUserDetails, updateUserRole } from '../services/authService';
 
 export const getUserByGoogleId = async (req: Request, res: Response) => {
   const { googleId } = req.params;
@@ -89,5 +89,14 @@ export const getAllsKonsumenUsers = async (req: Request, res: Response) => {
       res.status(200).json(konsultanUsers);
   } catch (error) {
       res.status(400).json({ error: (error as Error).message });
+  }
+};
+
+export const getAllsAdminUsers = async (req: Request, res: Response) => {
+  try {
+    const adminUsers = await getAllAdminUsers(); // Panggil fungsi dari service
+    res.status(200).json(adminUsers);
+  } catch (error) {
+    res.status(400).json({ error: (error as Error).message });
   }
 };

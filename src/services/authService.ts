@@ -55,6 +55,16 @@ export const getAllKonsumenUsers = async (): Promise<IUser[]> => {
 };
 
 
+export const getAllAdminUsers = async (): Promise<IUser[]> => {
+  try {
+    return await User.find({ role: 'Admin' }).exec();
+  } catch (error) {
+    throw new Error(`Error fetching all Admin users: ${(error as Error).message}`);
+  }
+};
+
+
+
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';  // simpan secret key di variabel lingkungan
 
 // Fungsi untuk membuat token JWT
