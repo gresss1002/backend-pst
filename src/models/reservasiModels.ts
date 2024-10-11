@@ -13,6 +13,7 @@ export interface IReservasi extends Document {
     status: "Disetujui" | "Disetujui Admin" | "Disetujui Konsultan" | "Menunggu Konfirmasi";
     link: string;
     descriptionReservasi: string;
+    createdAt: Date;
 }
 
 const ReservasiSchema = new Schema<IReservasi>({
@@ -26,6 +27,7 @@ const ReservasiSchema = new Schema<IReservasi>({
     status: { type: String, enum: ["Disetujui", "Disetujui Admin", "Disetujui Konsultan", "Menunggu Konfirmasi"], default: 'Menunggu Konfirmasi' },
     link: { type: String },
     descriptionReservasi: { type: String },
+    createdAt: { type: Date, default: Date.now },
 });
 
 const Reservasi = model<IReservasi>('Reservasi', ReservasiSchema);
